@@ -16,7 +16,13 @@ export default defineConfig({
           name: 'customAxiosInstance',
         },
         operations: {
-          getPaginatedItems: {
+          listItemsGet: {
+            query: {
+              useInfinite: true,
+              useInfiniteQueryParam: 'cursor',
+            },
+          },
+          listItemsPost: {
             query: {
               useInfinite: true,
               useInfiniteQueryParam: 'cursor',

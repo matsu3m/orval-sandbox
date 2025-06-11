@@ -1,17 +1,22 @@
 import { Fragment } from 'react';
-import { type GetPaginatedItems200, useGetPaginatedItemsInfinite } from '../__generated__/api';
+import { listItemsPost, useListItemsPostInfinite } from '../__generated__/api';
 
-export function InfiniteScrollTest() {
+export function PostInfiniteScroll() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
-    useGetPaginatedItemsInfinite(
+    useListItemsPostInfinite(
       {
         limit: 10,
       },
       {
         query: {
-          getNextPageParam: ({ hasMore, nextCursor }: GetPaginatedItems200) => {
+          getNextPageParam: ({ hasMore, nextCursor }) => {
             return hasMore ? nextCursor : undefined;
           },
+          queryFn: ({ pageParam }) =>
+            listItemsPost({
+              limit: 10,
+              cursor: typeof pageParam === 'string' ? pageParam : undefined,
+            }),
         },
       }
     );
@@ -25,7 +30,7 @@ export function InfiniteScrollTest() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h3>Infinite Scroll Test</h3>
+      <h3>POST Infinite Scroll</h3>
       <div>
         {data.pages.map((group) => (
           <Fragment key={group.nextCursor || 'last-page'}>
