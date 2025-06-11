@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Infinite Scroll API
+  version: 1.0.0
+
+paths:
+  /api/items:
+    get:
+      operationId: getPaginatedItems
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Item'
+                  nextCursor:
+                    type: string
+                    nullable: true
+                  hasMore:
+                    type: boolean
+                required:
+                  - items
+                  - nextCursor
+                  - hasMore
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      required:
+        - id
+        - title
