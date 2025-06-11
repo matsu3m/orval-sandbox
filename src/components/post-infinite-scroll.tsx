@@ -4,9 +4,7 @@ import { listItemsPost, useListItemsPostInfinite } from '../__generated__/api';
 export const PostInfiniteScroll = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
     useListItemsPostInfinite(
-      {
-        limit: 10,
-      },
+      {},
       {
         query: {
           getNextPageParam: ({ hasMore, nextCursor }) => {
