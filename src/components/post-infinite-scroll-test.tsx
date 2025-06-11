@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { listItemsPost, useListItemsPostInfinite } from '../__generated__/api';
 
-export function PostInfiniteScroll() {
+export const PostInfiniteScroll = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
     useListItemsPostInfinite(
       {

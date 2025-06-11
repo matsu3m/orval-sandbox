@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { useListItemsGetInfinite } from '../__generated__/api';
 
-export function GetInfiniteScroll() {
+export const GetInfiniteScroll = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isPending } =
     useListItemsGetInfinite(
       {
