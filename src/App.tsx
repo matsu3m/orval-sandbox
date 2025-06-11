@@ -1,5 +1,5 @@
-import { GetInfiniteScroll } from './components/get-infinite-scroll-test';
-import { PostInfiniteScroll } from './components/post-infinite-scroll-test';
+import { GetInfiniteScroll } from './components/get-infinite-scroll';
+import { PostInfiniteScroll } from './components/post-infinite-scroll';
 
 function App() {
   return (
